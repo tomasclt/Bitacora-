@@ -1,0 +1,19 @@
+function setup() {
+  createCanvas(400, 400);
+  background(100);
+}
+
+function draw() {
+  let x = random(width);
+  let y = random(height);
+  let tamano = random(20, 60);
+  let colorFigura = color(random(255), random(255), random(255));
+  fill(colorFigura);
+  noStroke();
+  
+  if (random(1) > 0.5) {
+    ellipse(x, y, tamano, tamano);
+  } else {
+    rect(x, y, tamano, tamano);
+  }
+}
