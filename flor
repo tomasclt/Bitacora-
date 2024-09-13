@@ -1,0 +1,35 @@
+let angle = 0;
+let innerAngle = 0;
+
+function setup() {
+  createCanvas(400, 400);
+  angleMode(DEGREES);
+}
+
+function draw() {
+  background(240);
+  
+  translate(200, 200);
+  rotate(angle);
+  
+  noStroke();
+  fill('rgba(64,28,46,0.5)');
+  
+  for (let i = 0; i < 18; i++) {
+    ellipse(0, 0, 60, 180);
+    rotate(360 / 18);
+  }
+  
+  push();
+  rotate(-innerAngle);
+  fill('rgba(255,0,13,0.6)');
+  
+  for (let i = 0; i < 18; i++) {
+    ellipse(0, 0, 30, 60);
+    rotate(360 / 18);
+  }
+  pop();
+  
+  angle += 1;
+  innerAngle += 1;
+}
