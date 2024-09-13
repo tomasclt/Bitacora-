@@ -1,0 +1,54 @@
+let figuras = [];
+let tamanoBase = 40;
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  background(100);
+  for (let i = 0; i < figuras.length; i++) {
+    moverFigura(figuras[i]);
+    rebotarFigura(figuras[i]);
+    mostrarFigura(figuras[i]);
+  }
+}
+
+function mousePressed() {
+  let nuevaFigura = {
+    x: mouseX,
+    y: mouseY,
+    xSpeed: random(-5, 5),
+    ySpeed: random(-5, 5),
+    color: color(random(255), random(255), random(255)),
+    tamano: random(20, tamanoBase),
+    tipo: random(['circulo', 'cuadrado'])
+  };
+  
+  figuras.push(nuevaFigura);
+}
+
+function moverFigura(figura) {
+  figura.x += figura.xSpeed;
+  figura.y += figura.ySpeed;
+}
+
+function rebotarFigura(figura) {
+  if (figura.x > width || figura.x < 0) {
+    figura.xSpeed *= -1;
+  }
+  if (figura.y > height || figura.y < 0) {
+    figura.ySpeed *= -1;
+  }
+}
+
+function mostrarFigura(figura) {
+  fill(figura.color);
+  noStroke();
+  
+  if (figura.tipo === 'circulo') {
+    ellipse(figura.x, figura.y, figura.tamano, figura.tamano);
+  } else if (figura.tipo === 'cuadrado') {
+    rect(figura.x, figura.y, figura.tamano, figura.tamano);
+  }
+}
