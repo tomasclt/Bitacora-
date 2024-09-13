@@ -1,0 +1,23 @@
+let x;
+let y;
+
+function setup() {
+  createCanvas(400, 400);
+  x = 200;
+  y = 200;
+}
+
+function draw() {
+  background(220);
+  
+  let colores = ["rgb(80,80,80)", "rgb(255,0,45)", "rgb(58,216,68)", "rgb(88,96,34)", "green"];
+  
+  x = x + random(-5, 5);
+  y = y + random(-5, 5);
+  
+  let c = random(colores);
+  
+  strokeWeight(2);
+  fill(c);
+  ellipse(x, y, 50, 50);
+}
